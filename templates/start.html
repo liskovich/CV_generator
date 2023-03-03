@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CV Generator</title>
+    <style>
+
+        body {
+            background-color: #f2f2f2;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-family: Courier;
+            font-size: 3em;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            text-align: justify;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px dotted #333;
+        }
+        a:hover {
+            color: #777;
+            border-bottom: 1px solid #777;
+        }
+        .textbox {
+            background-color: #fff;
+            border: 2px solid #333;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            max-width: 600px;
+            padding: 20px;
+            text-align: justify;
+        }
+        .textbox p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+        button {
+            background-color: #0077ff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 1.2em;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0062cc;
+        }
+    </style>
+</head>
+<body>
+
+<main>
+    <h1>CV Generator</h1>
+    <h2>A "OpenAI Hackathon" concept by team AIBITL</h2>
+
+    <div class="textbox">
+        <p>Having trouble finding a job? We've created a solution, that creates a CV just for you, using only your voice input. Click the following button to start your CV creating journey! Make sure to answer the question <b>loud and clear</b> for better results.</p>
+    </div>
+
+    <button onclick="window.location.href='/general';">
+        <p>Create CV</p>
+    </button>
+
+</main>
+</body>
+</html>

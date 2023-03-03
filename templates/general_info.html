@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>General information</title>
+    <style>
+
+        body {
+            background-color: #f2f2f2;
+            font-family: Georgia, serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            font-family: Impact;
+            font-size: 3em;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+            text-align: center;
+        }
+        button {
+            background-color: #0077ff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 1.2em;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin: 0 auto;
+            margin-top: 30px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0062cc;
+        }
+        #nextQuestion{
+            margin-top: 200px;
+            background-color: Maroon;
+        }
+    </style>
+</head>
+<body>
+
+<h1>General information</h1>
+<p>Press the button bellow, and state your <b>name, address, phone number</b></p>
+
+<button id="start-button">
+    <p>Start recording</p>
+</button>
+
+<button id="nextQuestion"onclick="window.location.href='/bio';">
+    <p>Next question</p>
+</button>
+
+<h2 id="status"></h2>
+<script>
+    const startButton = document.getElementById("start-button");
+    const stopButton = document.getElementById("nextQuestion");
+    const status = document.getElementById("status");
+
+    let isRecording = false;
+
+    startButton.addEventListener("click", async () => {
+        const response = await fetch("/start", { method: "POST" });
+        if (response.ok) {
+            isRecording = true;
+            startButton.disabled = true;
+            stopButton.disabled = false;
+        } else {
+            alert("An error occurred while starting the recording");
+        }
+        status.innerText = "Recording..."
+    });
+
+    stopButton.addEventListener("click", async () => {
+        const response = await fetch("/general/send", { method: "POST" });
+        if (response.ok) {
+            isRecording = false;
+            startButton.disabled = false;
+            stopButton.disabled = true;
+            alert("Recording completed successfully");
+        } else {
+            alert("An error occurred while stopping the recording");
+        }
+        status.innerText = "Recorded!"
+    });
+</script>
+
+</body>
+</html>

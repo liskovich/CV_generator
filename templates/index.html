@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Record Audio</title>
+</head>
+<body>
+<h1>Record Audio</h1>
+<button id="start-button">Start Recording</button>
+<button id="stop-button">Stop Recording</button>
+
+<script>
+    const startButton = document.getElementById("start-button");
+    const stopButton = document.getElementById("stop-button");
+
+    let isRecording = false;
+
+    startButton.addEventListener("click", async () => {
+        const response = await fetch("/start", { method: "POST" });
+        if (response.ok) {
+            isRecording = true;
+            startButton.disabled = true;
+            stopButton.disabled = false;
+        } else {
+            alert("An error occurred while starting the recording");
+        }
+    });
+
+    stopButton.addEventListener("click", async () => {
+        const response = await fetch("/stop", { method: "POST" });
+        if (response.ok) {
+            isRecording = false;
+            startButton.disabled = false;
+            stopButton.disabled = true;
+            alert("Recording completed successfully");
+        } else {
+            alert("An error occurred while stopping the recording");
+        }
+    });
+</script>
+</body>
+</html>
