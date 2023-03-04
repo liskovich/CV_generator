@@ -1,0 +1,27 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Local development settings
+instance/
+.env
+
+# IDE files
+.vscode/
+.idea/
+
+# Dependencies
+venv/
+env/
+pip-lock.txt
+
+# Logs
+*.log
+log/
+logs/
+
+# Other
+*.swp
+.DS_Store
+recs/
