@@ -3,8 +3,12 @@ from flask import Flask, render_template, request
 import pyaudio
 import wave
 import datetime
-from modules.whisper import recognize_audio
-from modules.gpt import general_info, clean_speech, extract
+from . import gpt
+
+# from project.whisper import recognize_audio
+# from project.gpt import general_info, clean_speech, extract
+
+from . import whisper
 
 app = Flask(__name__)
 
@@ -89,8 +93,8 @@ def general():
 @app.route('/general/send', methods=['POST'])
 def general_post():
     recording_filename = stop_recording()
-    recognized = recognize_audio(recording_filename)
-    output = general_info(recognized)
+    recognized = whisper.recognize_audio(recording_filename)
+    output = gpt.general_info(recognized)
     name = output[0]
     address = output[0]
     phone = output[0]
@@ -104,8 +108,8 @@ def bio():
 @app.route('/bio/send', methods=['POST'])
 def bio_post():
     recording_filename = stop_recording()
-    recognized = recognize_audio(recording_filename)
-    bio = clean_speech(recognized)
+    recognized = whisper.recognize_audio(recording_filename)
+    bio = gpt.clean_speech(recognized)
 
 
 @app.route('/exp')
@@ -116,8 +120,8 @@ def exp():
 @app.route('/exp/send', methods=['POST'])
 def exp_post():
     recording_filename = stop_recording()
-    recognized = recognize_audio(recording_filename)
-    experience = extract(recognized, 'work and volunteering experience')
+    recognized = whisper.recognize_audio(recording_filename)
+    experience = gpt.extract(recognized, 'work and volunteering experience')
 
 
 @app.route('/ed')
@@ -128,8 +132,8 @@ def ed():
 @app.route('/ed/send', methods=['POST'])
 def ed_post():
     recording_filename = stop_recording()
-    recognized = recognize_audio(recording_filename)
-    education = extract(recognized, 'education and certificates')
+    recognized = whisper.recognize_audio(recording_filename)
+    education = gpt.extract(recognized, 'education and certificates')
 
 
 @app.route('/skill')
@@ -140,8 +144,8 @@ def skill():
 @app.route('/skill/send', methods=['POST'])
 def skill_post():
     recording_filename = stop_recording()
-    recognized = recognize_audio(recording_filename)
-    skills = extract(recognized, 'skills')
+    recognized = whisper.recognize_audio(recording_filename)
+    skills = gpt.extract(recognized, 'skills')
 
 
 @app.route('/interest')
@@ -152,8 +156,8 @@ def interest():
 @app.route('/interest/send', methods=['POST'])
 def interest_post():
     recording_filename = stop_recording()
-    recognized = recognize_audio(recording_filename)
-    interests = extract(recognized, 'interests and hobbies')
+    recognized = whisper.recognize_audio(recording_filename)
+    interests = gpt.extract(recognized, 'interests and hobbies')
 
 
 @app.route('/lang')
@@ -164,8 +168,8 @@ def lang():
 @app.route('/lang/send', methods=['POST'])
 def lang_post():
     recording_filename = stop_recording()
-    recognized = recognize_audio(recording_filename)
-    languages = extract(recognized, 'languages')
+    recognized = whisper.recognize_audio(recording_filename)
+    languages = gpt.extract(recognized, 'languages')
 
 
 @app.route('/quality')
@@ -176,8 +180,8 @@ def quality():
 @app.route('/quality/send', methods=['POST'])
 def quality_post():
     recording_filename = stop_recording()
-    recognized = recognize_audio(recording_filename)
-    qualities = extract(recognized, 'personal qualities')
+    recognized = whisper.recognize_audio(recording_filename)
+    qualities = gpt.extract(recognized, 'personal qualities')
 
 
 @app.route('/final')

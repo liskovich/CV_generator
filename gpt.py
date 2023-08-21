@@ -1,8 +1,10 @@
 import os
 import openai
+from dotenv import load_dotenv
 
-openai.api_key = os.environ['OPENAI_KEY']
-
+if os.getenv("OPENAI_KEY") is None:
+    load_dotenv()
+openai.api_key = os.getenv("OPENAI_KEY")
 
 def clean_speech(voice_input):
     response = openai.Completion.create(
