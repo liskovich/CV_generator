@@ -1,3 +1,7 @@
+# !!! THIS IS USED AS A DEMO ONLY REPO TO TEST MY AGENT !!!
+An old, non-significant repo I use to demonstrate some of the concepts for lablab.ai Autonomous AI Agent hackathon.
+```I do not recommend to run or use it in production.```
+
 # Next gen CV assistant:
 
 **The problem:** the process of applying for a job, creating a CV, going through interviews is not a simple process, especially for people with visual impairments. As an applicant, it is important to fully present oneself as they are, their skills and competences so that it is easier for employers to decide whether their company is a good match.
